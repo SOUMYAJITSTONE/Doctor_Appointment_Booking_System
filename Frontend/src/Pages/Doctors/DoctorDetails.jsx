@@ -4,15 +4,15 @@ import starIcon from '../../assets/images/Star.png';
 import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
 import { formateDate } from "../../utils/formateDate";
+import SidePanel from "./SidePanel"; // Ensure this path is correct
 
 const DoctorDetails = () => {
-  const [tab, setTab] = useState('about');  // Initialize the state for tab selection
+  const [tab, setTab] = useState('about'); // Initialize the state for tab selection
 
   return (
     <section>
       <div className="max-w-[1170px] px-5 mx-auto">
         <div className="grid md:grid-cols-3 gap-[50px]">
-          {/* Corrected column span */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-5">
               <figure className="max-w-[200px] max-h-[200px]">
@@ -57,9 +57,10 @@ const DoctorDetails = () => {
               {tab === 'about' && <DoctorAbout />}  
               {tab === 'feedback' && <Feedback />}
             </div>
-
+            <SidePanel />
           </div>
         </div>
+        
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import logo from "../../assets/images/logo.png";
 import userImg from "../../assets/images/avatar-icon.png";
 import { NavLink, Link } from "react-router-dom";
-import { BiMenu } from "react-icons/bi";
+import { BiMenu, BiX } from "react-icons/bi";
 
 const navLinks = [
   { path: "/home", display: "Home" },
@@ -13,7 +13,7 @@ const navLinks = [
 
 const Header = () => {
   const headerRef = useRef(null);
-  const menuRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false); // State for menu toggle
 
   const handleStickyHeader = () => {
     if (window.scrollY > 80) {
@@ -25,43 +25,40 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleStickyHeader);
-
     return () => {
       window.removeEventListener("scroll", handleStickyHeader);
     };
   }, []);
 
-  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); // Toggle menu open/close
+  };
 
   return (
     <header
-      className="header flex items-center transition-all duration-300 ease-in-out"
+      className="header flex items-center transition-all duration-300 ease-in-out z-50 relative bg-white shadow-md"
       ref={headerRef}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="logo flex items-center gap-2">
-            {/* <img src={logo} alt="Logo" className="w-[40px] h-[40px]" /> */}
             <span className="text-xl font-bold text-primaryColor">
               HealthCare
             </span>
           </div>
 
-          {/* Menu */}
-          <div
-            className="navigation hidden md:block transition-transform duration-300 ease-in-out"
-            ref={menuRef}
-          >
-            <ul className="menu flex items-center gap-[2.7rem]">
+          {/* Desktop Menu */}
+          <div className="navigation hidden md:block">
+            <ul className="menu flex items-center gap-6">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <NavLink
                     to={link.path}
                     className={(navClass) =>
                       navClass.isActive
-                        ? "text-primaryColor text-[16px] leading-7 font-[600] underline"
-                        : "text-textColor text-[16px] leading-7 font-[500] hover:text-primaryColor transition-colors duration-200"
+                        ? "text-primaryColor text-[16px] font-bold underline"
+                        : "text-gray-600 text-[16px] font-medium hover:text-primaryColor transition-colors duration-200"
                     }
                   >
                     {link.display}
@@ -84,40 +81,73 @@ const Header = () => {
             </Link>
 
             <Link to="/Login">
-              <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px] shadow-lg hover:shadow-xl hover:shadow-secondaryColor/50 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primaryColor focus:ring-offset-2">
+              <button className="bg-primaryColor py-2 px-6 text-white font-medium h-[44px] flex items-center justify-center rounded-[50px] shadow-lg hover:shadow-xl hover:shadow-secondaryColor/50 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primaryColor focus:ring-offset-2">
                 Login
               </button>
             </Link>
 
-            <span className="md:hidden" onClick={toggleMenu}>
-              <BiMenu className="w-8 h-8 cursor-pointer text-primaryColor hover:rotate-180 transition-transform duration-300" />
+            {/* Hamburger Menu */}
+            <span
+              className="md:hidden"
+              onClick={toggleMenu}
+              aria-label="Toggle Menu"
+            >
+              {menuOpen ? (
+                <BiX className="w-8 h-8 cursor-pointer text-primaryColor hover:rotate-180 transition-transform duration-300" />
+              ) : (
+                <BiMenu className="w-8 h-8 cursor-pointer text-primaryColor hover:rotate-180 transition-transform duration-300" />
+              )}
             </span>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className="navigation__mobile absolute top-full left-0 w-full bg-white shadow-md py-4 px-6 md:hidden transform -translate-y-full transition-transform duration-300"
-          ref={menuRef}
-        >
-          <ul className="flex flex-col items-start gap-4">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink
-                  to={link.path}
-                  className={(navClass) =>
-                    navClass.isActive
-                      ? "text-primaryColor text-[16px] font-[600]"
-                      : "text-textColor text-[16px] font-[500] hover:text-primaryColor transition-colors duration-200"
-                  }
+        {menuOpen && (
+          <>
+            {/* Black Overlay */}
+            <div
+              className="fixed inset-0 bg-black opacity-50 z-10"
+              onClick={toggleMenu}
+            ></div>
+
+            {/* Mobile Menu Panel */}
+            <div className="fixed top-0 right-0 w-[80%] h-full bg-white shadow-lg py-6 px-4 z-20 transform transition-transform duration-300">
+              <div className="flex justify-between items-center mb-8">
+                <span className="text-lg font-bold text-primaryColor">
+                  HealthCare
+                </span>
+                <BiX
+                  className="w-8 h-8 cursor-pointer text-primaryColor transition-transform duration-300"
                   onClick={toggleMenu}
-                >
-                  {link.display}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+                />
+              </div>
+              <ul className="flex flex-col items-start gap-6">
+                {navLinks.map((link, index) => (
+                  <li key={index} className="w-full">
+                    <NavLink
+                      to={link.path}
+                      className={(navClass) =>
+                        navClass.isActive
+                          ? "text-primaryColor text-[18px] font-bold"
+                          : "text-gray-600 text-[18px] font-medium hover:text-primaryColor transition-colors duration-200"
+                      }
+                      onClick={toggleMenu}
+                    >
+                      {link.display}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10">
+                <Link to="/Login">
+                  <button className="w-full bg-primaryColor text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </header>
   );
