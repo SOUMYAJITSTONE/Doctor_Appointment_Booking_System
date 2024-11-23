@@ -3,6 +3,10 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+<<<<<<< Updated upstream
+=======
+import "swiper/css/autoplay";
+>>>>>>> Stashed changes
 import patientAvatar from "../../assets/images/patient-avatar.png";
 import { HiStar } from "react-icons/hi";
 
@@ -10,10 +14,18 @@ const Testimonial = () => {
   return (
     <div className="mt-[30px] lg:mt-[55px] px-5">
       <Swiper
+<<<<<<< Updated upstream
         modules={[Pagination]}
         spaceBetween={30}
         slidesPerView={1}
         pagination={{ clickable: true }}
+=======
+        modules={[Pagination, Autoplay]}
+        spaceBetween={30}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+>>>>>>> Stashed changes
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -51,6 +63,10 @@ const Testimonial = () => {
                 He has been a life-changing companion throughout my journey.
                 Thank you so much!
               </p>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
               <div className="flex items-center gap-1 mt-4">
                 <HiStar className="text-yellow-500 w-5 h-5" />
                 <HiStar className="text-yellow-500 w-5 h-5" />
