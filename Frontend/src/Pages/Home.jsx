@@ -28,12 +28,11 @@ const Home = () => {
             {/* ======= Hero section content ================ */}
             <div>
               <div className="lg:w-[570px]">
-                <h1 className="text-[36px] leading-[45px] text-headingColor font-[800] md:text-[60px] md:leading-[70px]">
+                <h1 className="text-[36px] leading-[45px] text-headingColor font-[800] md:text-[60px] md:leading-[70px] font-sans">
                   We help patients live a healthy, longer life
                 </h1>
                 <p className='text_para'>
-                  So my name  is soumyajit sanyal and i am a software developer i ahd created some absic pprojects using html css and js
-
+                A healthcare provider delivers medical care and support to maintain or improve health. This includes hospitals, clinics, and professionals like doctors and nurses, ensuring personalized, high-quality treatment for patients.
                 </p>
                 <button className='btn'>
                   Request an appointment
@@ -56,12 +55,6 @@ const Home = () => {
                   <span className='w-[100px] h-2 bg-irisBlueColor rounded-full block mt-[-6px]'></span>
                   <p className='text_para'>Patient Satisfaction</p>
                 </div>
-
-
-
-
-
-
 
 
 
@@ -117,7 +110,7 @@ const Home = () => {
             <div className='mt-[30px]'>
               <h2 className='text-[26px] leading-9 text-headingColor font-[700] text-center'>Find a Location</h2> 
               <p className='text-[16px] leading-7 text-textColor font-[400] mt-4 text-center'>
-                World-Class care for everyone.Our health System offers unmatched, expert health care. From the lab to the clinic. 
+                So you can find a better location on your area and book an hostpital accordingly.
                 </p> 
                 <Link to="/doctors" className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px]
                 mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none'>
@@ -132,7 +125,7 @@ const Home = () => {
             <div className='mt-[30px]'>
               <h2 className='text-[26px] leading-9 text-headingColor font-[700] text-center'>Book Apppointment</h2> 
               <p className='text-[16px] leading-7 text-textColor font-[400] mt-4 text-center'>
-                World-Class care for everyone.Our health System offers unmatched, expert health care. From the lab to the clinic. 
+                Book an appointment for the first time with a your favourite doctor and  get a face to face call from them.
                 </p> 
                 <Link to="/doctors" className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px]
                 mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none'>
@@ -172,9 +165,7 @@ const Home = () => {
                 Get virtual treatment<br/> anytime.
               </h2>
               <ul className='pl-4'>
-                <li className='text__para'>
-                  1.Schedule the appointment directly.
-                </li>
+                <li className='text__para'>1.Schedule the appointment directly.</li>
                 <li className="text_para">2.Search for physician here,and contact their Office.</li>
                 <li className="text_para">3.View our physician who are accepting new patients, use the online scheduling tool to select an appointmnet time.</li>
               </ul>

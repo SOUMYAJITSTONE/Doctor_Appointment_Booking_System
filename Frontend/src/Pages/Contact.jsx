@@ -1,54 +1,75 @@
-import React from 'react';
+import React from "react";
 
 const Contact = () => {
   return (
-    <section className="px-4 mx-auto max-w-screen-md">
-      <div>
-        <h2 className="heading text-center">Contact Us</h2>
-        <p className="mb-8 lg:mb-16 font-light text-center text__para">
-          Got a technical issue? Want to send feedback about a beta feature? Let us know.
-        </p>
-        <form action="#" className="space-y-8">
+    <section className="bg-gray-50 py-10 lg:py-16">
+      <div className="container mx-auto px-5 max-w-screen-md">
+        {/* Heading Section */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-primaryColor mb-4">
+            Contact Us
+          </h2>
+          <p className="text-lg text-gray-600">
+            Have a question or need help? Feel free to get in touch with us. We're here to assist you!
+          </p>
+        </div>
+
+        {/* Form Section */}
+        <form
+          action="#"
+          className="bg-white rounded-lg shadow-lg p-6 md:p-10 space-y-6"
+        >
+          {/* Email Input */}
           <div>
-            <label htmlFor="email" className="form_label">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Your Email
             </label>
             <input
               type="email"
               id="email"
               placeholder="example@gmail.com"
-              className="form_input mt-1"
+              className="mt-2 w-full px-4 py-3 border border-[#0066ff61] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0066ff] focus:border-[#0066ff] text-gray-800"
+              required
             />
           </div>
+
+          {/* Subject Input */}
           <div>
-            <label htmlFor="subject" className="form_label">
+            <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
               Subject
             </label>
             <input
               type="text"
               id="subject"
               placeholder="Let us know how we can help you"
-              className="form_input mt-1"
+              className="mt-2 w-full px-4 py-3 border border-[#0066ff61] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0066ff] focus:border-[#0066ff] text-gray-800"
+              required
             />
           </div>
-          <div className='sm:col-span-2'>
-            <label htmlFor="message" className="form_label">
-              Your message
+
+          {/* Message Textarea */}
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+              Your Message
             </label>
             <textarea
-            rows='6'
-              type="text"
               id="message"
-              placeholder="Leave a comment......"
-              className="form_input mt-1"
-            />
+              rows="6"
+              placeholder="Leave a comment..."
+              className="mt-2 w-full px-4 py-3 border border-[#0066ff61] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0066ff] focus:border-[#0066ff] text-gray-800"
+              required
+            ></textarea>
           </div>
-          
-          
-          
-          <button type='submit' className='btn rounde sm:w-fit'>
-            Submit
-          </button>
+
+          {/* Submit Button */}
+          <div className="text-center">
+            <button
+              type="submit"
+              className="px-8 py-3 text-white bg-primaryColor rounded-lg shadow-lg hover:bg-primaryDark transition duration-300 text-lg font-semibold"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </section>

@@ -1,8 +1,9 @@
 import React from "react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/autoplay"; 
 import patientAvatar from "../../assets/images/patient-avatar.png";
 import { HiStar } from "react-icons/hi";
 
@@ -10,10 +11,11 @@ const Testimonial = () => {
   return (
     <div className="mt-[30px] lg:mt-[55px] px-5">
       <Swiper
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]} 
         spaceBetween={30}
         slidesPerView={1}
         pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }} 
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -33,7 +35,8 @@ const Testimonial = () => {
         {[1, 2, 3, 4].map((_, index) => (
           <SwiperSlide key={index}>
             <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
-              <div className="flex items-center gap-4">
+              
+            <div className="flex items-center gap-4">
                 <img
                   src={patientAvatar}
                   alt="Patient Avatar"
@@ -51,6 +54,8 @@ const Testimonial = () => {
                 He has been a life-changing companion throughout my journey.
                 Thank you so much!
               </p>
+              
+              
               <div className="flex items-center gap-1 mt-4">
                 <HiStar className="text-yellow-500 w-5 h-5" />
                 <HiStar className="text-yellow-500 w-5 h-5" />

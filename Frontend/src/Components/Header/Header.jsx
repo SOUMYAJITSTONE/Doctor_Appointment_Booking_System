@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import logo from "../../assets/images/logo.png";
 import userImg from "../../assets/images/avatar-icon.png";
 import { NavLink, Link } from "react-router-dom";
 import { BiMenu, BiX } from "react-icons/bi";
@@ -13,7 +12,7 @@ const navLinks = [
 
 const Header = () => {
   const headerRef = useRef(null);
-  const [menuOpen, setMenuOpen] = useState(false); // State for menu toggle
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleStickyHeader = () => {
     if (window.scrollY > 80) {
@@ -31,7 +30,7 @@ const Header = () => {
   }, []);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle menu open/close
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -43,8 +42,8 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="logo flex items-center gap-2">
-            <span className="text-xl font-bold text-primaryColor">
-              HealthCare
+            <span className="text-3xl font-bold text-primaryColor">
+              <span className="text-secondaryColor">Health</span>Care
             </span>
           </div>
 
@@ -104,13 +103,10 @@ const Header = () => {
         {/* Mobile Menu */}
         {menuOpen && (
           <>
-            {/* Black Overlay */}
             <div
               className="fixed inset-0 bg-black opacity-50 z-10"
               onClick={toggleMenu}
             ></div>
-
-            {/* Mobile Menu Panel */}
             <div className="fixed top-0 right-0 w-[80%] h-full bg-white shadow-lg py-6 px-4 z-20 transform transition-transform duration-300">
               <div className="flex justify-between items-center mb-8">
                 <span className="text-lg font-bold text-primaryColor">
